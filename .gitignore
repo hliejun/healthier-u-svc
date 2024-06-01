@@ -1,2 +1,13 @@
-# Google App Engine generated folder
-appengine-generated/
+appengine-generated
+build
+coverage
+dist
+node_modules
+tmp
+bruno
+secrets
+
+.DS_Store
+.env
+
+env-variables.yaml

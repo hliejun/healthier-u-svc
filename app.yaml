@@ -1,0 +1,12 @@
+runtime: nodejs
+
+runtime_config:
+  operating_system: 'ubuntu22'
+  runtime_version: '22'
+
+env: flex
+
+service_account: lively-infinity-425006-q4@appspot.gserviceaccount.com
+
+includes:
+  - env-variables.yaml

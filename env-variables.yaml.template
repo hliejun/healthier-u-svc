@@ -1,0 +1,5 @@
+env_variables:
+  REGION: ""
+  VERTEX_PROJECT_ID: ""
+  VERTEX_API_KEY: ""
+  GOOGLE_APPLICATION_CREDENTIALS: ""
