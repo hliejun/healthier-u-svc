@@ -1,41 +1,62 @@
-import axios from 'axios';
 import { Request } from 'express';
 
-export const discoverHealthierChoice = async (req: Request) => {
-  const region = process.env.REGION ?? 'asia-southeast1';
-  const projectId = process.env.VERTEX_PROJECT_ID ?? '';
-  const accessToken = process.env.VERTEX_ACCESS_TOKEN_1HR ?? '';
-  const vertexSvcUrl = `https://${region}-aiplatform.googleapis.com/v1/projects/${projectId}/locations/${region}/publishers/google/models/gemini-1.5-pro:generateContent`;
+import { validateString } from '../../utils/validators';
+import { generateContentInJson } from '../vertex';
 
-  const promptText =
-    'Return a formatted JSON with keys brand, productName, isHealthierChoice and nutrigrade, with nutrigrade being the encircled letter';
+export const discoverGroceries = async (req: Request) => {
+  const mimeType = req.body?.mimeType;
+  const data = req.body?.data;
+  const token = req.body?.token;
 
-  const result = await axios.post(
-    vertexSvcUrl,
-    {
-      contents: [
-        {
-          role: 'USER',
-          parts: [
-            {
-              text: promptText,
-            },
-            {
-              inlineData: {
-                mimeType: req.body?.mimeType,
-                data: req.body?.data,
-              },
-            },
-          ],
-        },
-      ],
-    },
-    {
-      headers: {
-        Authorization: `Bearer ${req.body?.token ?? accessToken}`,
-      },
-    },
-  );
+  validateString(mimeType, 'mimeType');
+  validateString(data, 'data');
 
-  return result?.data ?? null;
+  const promptText = `Return a formatted JSON with keys 
+    "brand", "productName", "isHealthierChoice" and "nutrigrade", 
+    with "brand" being the brand name of the product, 
+    "productName" being the name of the product in pascal case, 
+    "isHealthierChoice" value being whether the product packaging has a 
+    Healthier Choice pyramid logo printed on, 
+    and "nutrigrade" being the value of the magnified letter in 
+    the "A, B, C, D" nutri-grade grading scale`;
+
+  const res = await generateContentInJson(promptText, mimeType, data, token);
+
+  // TODO: validate and typecast res
+
+  return res;
+};
+
+export const discoverMeal = async (req: Request) => {
+  const mimeType = req.body?.mimeType;
+  const data = req.body?.data;
+  const token = req.body?.token;
+
+  validateString(mimeType, 'mimeType');
+  validateString(data, 'data');
+
+  const promptText = `TBC`; // TODO: implement this
+
+  const res = await generateContentInJson(promptText, mimeType, data, token);
+
+  // TODO: validate and typecast res
+
+  return res;
+};
+
+export const discoverNutrition = async (req: Request) => {
+  const mimeType = req.body?.mimeType;
+  const data = req.body?.data;
+  const token = req.body?.token;
+
+  validateString(mimeType, 'mimeType');
+  validateString(data, 'data');
+
+  const promptText = `TBC`; // TODO: implement this
+
+  const res = await generateContentInJson(promptText, mimeType, data, token);
+
+  // TODO: validate and typecast res
+
+  return res;
 };
