@@ -15,17 +15,18 @@
     "project": "./tsconfig.json",
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint", "import"],
+  "plugins": ["@typescript-eslint", "import", "prettier"],
   "rules": {
-    "indent": ["error", 2],
+    "complexity": "warn",
+    "indent": [2, 2, { "SwitchCase": 1 }],
+    "max-lines": "warn",
     "no-multi-spaces": "error",
     "no-multiple-empty-lines": "error",
     "no-var": "error",
     "prefer-const": "error",
+    "prettier/prettier": "warn",
     "semi": "error",
     "space-in-parens": "error",
-    "complexity": "warn",
-    "max-lines": "warn",
     "@typescript-eslint/no-unused-vars": [
       "warn",
       {

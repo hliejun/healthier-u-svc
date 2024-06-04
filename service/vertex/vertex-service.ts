@@ -33,7 +33,9 @@ export const generateContentInJson = async (
       },
     );
   } catch (error) {
-    const errMsg = `ERROR [VERTEX]: ${((error as AxiosError)?.response?.data as { error: unknown })?.error ?? 'Encountered error when invoking Vertex API.'}`;
+    const errObj = ((error as AxiosError)?.response?.data as { error: unknown })
+      ?.error;
+    const errMsg = `ERROR [VERTEX]: ${errObj ? JSON.stringify(errObj) : 'Encountered error when invoking Vertex API.'}`;
     console.error(errMsg);
     throw { error: errMsg };
   }

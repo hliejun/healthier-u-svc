@@ -1,13 +1,51 @@
-appengine-generated
-build
-coverage
-dist
+# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+
+# Dependencies
 node_modules
-tmp
-bruno
+
+# Expo
+.expo
+dist
+build
+web-build
+
+# Native
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Metro
+.metro-health-check*
+
+# Debug
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# MacOS
+.DS_Store
+*.pem
+
+# Env files
+.env
+env-variables.yaml
 secrets
 
-.DS_Store
-.env
+# Typescript
+*.tsbuildinfo
 
-env-variables.yaml
+# API docs
+bruno
+
+# Test coverage
+coverage
+
+# jenv
+.java-version
+
+# Other
+appengine-generated
+tmp
