@@ -35,7 +35,12 @@ export const discoverMeal = async (req: Request) => {
   validateString(mimeType, 'mimeType');
   validateString(data, 'data');
 
-  const promptText = `TBC`; // TODO: implement this
+  const promptText = `Return a formatted JSON with keys "mealName", "ingredients", 
+  "mainIngredients", "estCalories", "isRelativelyHealthy" and "isLegitimatePhoto", 
+  value being the type name of the meal is mix vegetable rice, 
+  the ingredients of the meal and main ingredients of the meal, 
+  the estimated calories, is relatively healthy choice and whether is it a legitimate 
+  photo taken by user and not from internet.`;
 
   const res = await generateContentInJson(promptText, mimeType, data, token);
 

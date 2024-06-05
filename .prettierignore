@@ -1,0 +1,13 @@
+.DS_Store
+node_modules
+build
+dist
+bruno
+coverage
+public
+.env
+.env.*
+
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
