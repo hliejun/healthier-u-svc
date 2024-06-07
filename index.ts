@@ -9,7 +9,7 @@ const app: Application = express();
 const host = process.env.HOST || 'localhost';
 const protocol = host === 'localhost' ? 'http' : 'https';
 const port = process.env.PORT || 8000;
-const sizeLimit = '10mb';
+const sizeLimit = '50mb';
 
 const urlEncoder = express.urlencoded({ limit: sizeLimit, extended: false });
 const jsonParser = express.json({ limit: sizeLimit });
