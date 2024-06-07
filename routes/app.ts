@@ -20,6 +20,7 @@ router.post(PATH_DISCOVER_GROCERIES, async (req: Request, res: Response) => {
   try {
     console.info(`[ROUTE] Pending request ${PATH_DISCOVER_GROCERIES}`);
     const data = await discoverGroceries(req);
+
     console.info(`[ROUTE] Success ${PATH_DISCOVER_GROCERIES}`);
 
     res.json(data);
